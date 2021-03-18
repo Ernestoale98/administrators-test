@@ -1,5 +1,5 @@
 """
-ASGI config for administrators project.
+ASGI config for administrators_test project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'administrators.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'administrators_test.settings')
 
 application = get_asgi_application()

@@ -1,4 +1,4 @@
-"""administrators URL Configuration
+"""administrators_test URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -17,9 +17,12 @@ from django.contrib import admin
 from django.urls import path
 
 from index import views as index_views
+from administrators import views as administrator_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Index
-    path('', index_views.index)
+    path('', index_views.index),
+    # Administrators
+    path('administrators/', administrator_views.index)
 ]

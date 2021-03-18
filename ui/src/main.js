@@ -32,7 +32,7 @@ Vue.use(ServerTable, {}, false, 'bootstrap4', {
 Vue.config.productionTip = false
 
 const routes = [
-    {path: '/administrators', component: AdministratorsTable}
+    {path: '/administrators_test', component: AdministratorsTable}
 ]
 
 const router = new VueRouter({
