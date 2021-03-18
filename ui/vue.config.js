@@ -3,14 +3,16 @@ const BundleTracker = require("webpack-bundle-tracker");
 
 module.exports = {
     // La ruta donde estará disponible el bundle de los archivos estáticos
-	publicPath: "http://127.0.0.1:8080/",
+    publicPath: "http://127.0.0.1:8080/",
+
     // Directorio donde se creará el bundle de archivos estáticos
     outputDir: './dist/',
+
     // Estable que se compile en tiempo de ejecución.
-	runtimeCompiler: true,
+    runtimeCompiler: true,
 
     // Los puntos de entrada de nuestra aplicación.
-	pages: {
+    pages: {
 		main: {
 		    // entry for the page
 		    entry: 'src/main.js',
@@ -18,7 +20,7 @@ module.exports = {
 
 	},
 
-	chainWebpack: config => {
+    chainWebpack: config => {
 		config.optimization
 		.splitChunks(false)
 
@@ -38,5 +40,9 @@ module.exports = {
 		.watchOptions({poll: 1000})
 		.https(false)
 		.headers({"Access-Control-Allow-Origin": ["\*"]})
-	}
+	},
+
+    transpileDependencies: [
+      'vuetify'
+    ]
 };
