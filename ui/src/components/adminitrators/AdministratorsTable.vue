@@ -1,19 +1,22 @@
 <template>
-  <div>
+  <v-container>
     <v-breadcrumbs
-        :items="items">
+        :items="breadcrumbs">
       <template v-slot:divider>
         <v-icon>mdi-chevron-right</v-icon>
       </template>
     </v-breadcrumbs>
-  </div>
+    <div id="people">
+      <v-server-table url="/people" :columns="columns" :options="options"/>
+    </div>
+  </v-container>
 </template>
 
 <script>
 export default {
   name: "AdministratorsTable",
   data: () => ({
-    items: [
+    breadcrumbs: [
       {
         text: 'Inicio',
         disabled: false,
@@ -25,6 +28,10 @@ export default {
         href: 'breadcrumbs_link_1',
       }
     ],
+    columns: ['id', 'name', 'age'],
+    options: {
+      // see the options API
+    }
   }),
 }
 </script>

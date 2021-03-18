@@ -15,7 +15,9 @@
           <v-icon v-text="item.icon"></v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title v-text="item.text"></v-list-item-title>
+          <v-list-item-title>
+            <router-link :to="item.route" v-text="item.text"></router-link>
+          </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list-item-group>
@@ -26,11 +28,10 @@
 export default {
   name: 'MainMenu',
   data: () => ({
-    selectedItem: 1,
+    selectedItem: 0,
     items: [
-      {text: 'Real-Time', icon: 'mdi-clock'},
-      {text: 'Audience', icon: 'mdi-account'},
-      {text: 'Conversions', icon: 'mdi-flag'},
+      {text: 'Dashboard', icon: 'mdi-clock', route: '/dashboard'},
+      {text: 'Administrators', icon: 'mdi-account', route: 'administrators'},
     ],
   }),
 }
