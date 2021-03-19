@@ -125,7 +125,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'public/media/')
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'public/static_dev/'),
+    os.path.join(BASE_DIR, 'public/static_dev'),
     os.path.join(BASE_DIR, "ui/dist"),  # Bundle de VUE
 )
 
