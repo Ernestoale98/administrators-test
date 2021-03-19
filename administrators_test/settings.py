@@ -144,3 +144,6 @@ WEBPACK_LOADER = {
         'LOADER_CLASS': 'webpack_loader.loader.WebpackLoader',
     }
 }
+
+CSRF_USE_SESSIONS = True
+CSRF_COOKIE_HTTPONLY = True
