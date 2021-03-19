@@ -7,12 +7,15 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify';
 
 import VueRouter from "vue-router";
+import VueToastr from "vue-toastr";
 
 import {ServerTable} from 'vue-tables-2'
-//VueTableComponents
+
+import VModal from 'vue-js-modal';
 
 //Components
 import AdministratorsTable from "./components/adminitrators/AdministratorsTable";
+//VueTableComponents
 import VtGenericFilter from "./components/vue-table/VtGenericFilter";
 import VtDataTable from "./components/vue-table/VtDataTable";
 import VtSortControl from "./components/vue-table/VtSortControl";
@@ -27,12 +30,14 @@ Vue.use(ServerTable, {}, false, 'bootstrap4', {
     sortControl: VtSortControl,
     pagination: VtPagination,
     perPageSelector: VtPerPageSelector
-})
+});
+Vue.use(VModal)
+Vue.use(VueToastr)
 
 Vue.config.productionTip = false
 
 const routes = [
-    {path: '/administrators_test', component: AdministratorsTable}
+    {path: '/administrators', component: AdministratorsTable}
 ]
 
 const router = new VueRouter({

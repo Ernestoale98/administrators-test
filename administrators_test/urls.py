@@ -24,5 +24,8 @@ urlpatterns = [
     # Index
     path('', index_views.index),
     # Administrators
-    path('administrators/', administrator_views.index)
+    path('administrators/', administrator_views.index),
+    path('administrators/store/', administrator_views.store),
+    # Roles
+    path('roles/', administrator_views.get_roles)
 ]

@@ -31,7 +31,7 @@ export default {
     selectedItem: 0,
     items: [
       {text: 'Dashboard', icon: 'mdi-clock', route: '/dashboard'},
-      {text: 'Administrators', icon: 'mdi-account', route: 'administrators_test'},
+      {text: 'Administrators', icon: 'mdi-account', route: 'administrators'},
     ],
   }),
 }
