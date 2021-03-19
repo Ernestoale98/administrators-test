@@ -10,11 +10,12 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "material-design-icons-iconfont": "^6.1.0",
+    "sweetalert2": "^10.15.6",
     "vue": "^2.6.11",
     "vue-js-modal": "^2.0.0-rc.6",
     "vue-router": "^3.5.1",
     "vue-tables-2": "^2.2.0",
-    "vue-toastr": "^2.1.2",
     "vuetify": "^2.4.0"
   },
   "devDependencies": {

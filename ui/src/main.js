@@ -1,13 +1,14 @@
 import VtTable from "./components/vue-table/VtTable";
 
 require('./bootsrap');
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+
 import Vue from 'vue'
 import App from './App.vue'
 
 import vuetify from './plugins/vuetify';
 
 import VueRouter from "vue-router";
-import VueToastr from "vue-toastr";
 
 import {ServerTable} from 'vue-tables-2'
 
@@ -32,7 +33,6 @@ Vue.use(ServerTable, {}, false, 'bootstrap4', {
     perPageSelector: VtPerPageSelector
 });
 Vue.use(VModal)
-Vue.use(VueToastr)
 
 Vue.config.productionTip = false
 

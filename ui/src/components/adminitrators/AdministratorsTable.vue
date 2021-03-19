@@ -3,7 +3,12 @@
     <v-breadcrumbs
         :items="breadcrumbs">
       <template v-slot:divider>
-        <v-icon>mdi-chevron-right</v-icon>
+        <v-icon>arrow_forward</v-icon>
+      </template>
+      <template v-slot:item="{ item }">
+        <v-breadcrumbs-item>
+          <router-link :to="item.href" v-text="item.text"></router-link>
+        </v-breadcrumbs-item>
       </template>
     </v-breadcrumbs>
     <div id="people">
@@ -33,12 +38,36 @@
         <div slot="status" slot-scope="props" class="text-center">
           <v-chip
               v-if="props.row.status"
-              color="green">Activo
+              label
+              color="success">Activo
           </v-chip>
           <v-chip
               v-else
+              label
+              text-color="white"
               color="red">Inactivo
           </v-chip>
+        </div>
+
+        <div slot="actions" slot-scope="props" class="text-center">
+          <v-btn
+              @click="edit(props.row.pk)"
+              icon
+              color="blue">
+            <v-icon>edit</v-icon>
+          </v-btn>
+          <v-btn
+              @click="show(props.row.pk)"
+              icon
+              color="gray">
+            <v-icon>remove_red_eye</v-icon>
+          </v-btn>
+          <v-btn
+              @click="erase(props.row.pk)"
+              icon
+              color="red">
+            <v-icon>restore_from_trash</v-icon>
+          </v-btn>
         </div>
       </v-server-table>
     </div>
@@ -48,26 +77,28 @@
 
 <script>
 import AdministratorModal from "./AdministratorModal";
+import Swal from 'sweetalert2'
 
 export default {
   name: "AdministratorsTable",
   components: {
-    AdministratorModal
+    AdministratorModal,
+    Swal
   },
   data: () => ({
     breadcrumbs: [
       {
         text: 'Inicio',
         disabled: false,
-        href: 'breadcrumbs_dashboard',
+        href: 'dashboard',
       },
       {
         text: 'Administradores',
         disabled: false,
-        href: 'breadcrumbs_link_1',
+        href: 'administrators',
       }
     ],
-    columns: ['pk', 'user__first_name', 'user__last_name', 'user__email', 'rol__name', 'status','actions'],
+    columns: ['pk', 'user__first_name', 'user__last_name', 'user__email', 'rol__name', 'status', 'actions'],
     options: {
       // see the options API
       columns: [
@@ -107,11 +138,49 @@ export default {
         'rol__name': "",
         'status': ""
       }
-    }
+    },
+    dialog: false
   }),
   methods: {
     openModal() {
       this.$modal.show('administrator-modal')
+    },
+    edit(id) {
+      this.$modal.show('administrator-modal', {
+        id: id,
+        'action': 'update'
+      })
+    },
+    show(id) {
+      this.$modal.show('administrator-modal', {
+        id: id,
+        'action': 'show'
+      })
+    },
+    erase(id) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.delete(`administrators/${id}/delete/`).then(response => {
+            this.$refs.table.refresh()
+            Swal.fire(
+                'Deleted!',
+                'Administrator has been deleted',
+                'success'
+            )
+          }).catch(error => {
+
+          });
+
+        }
+      })
     }
   }
 }

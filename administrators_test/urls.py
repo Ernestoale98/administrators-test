@@ -26,6 +26,9 @@ urlpatterns = [
     # Administrators
     path('administrators/', administrator_views.index),
     path('administrators/store/', administrator_views.store),
+    path('administrators/<int:id>/', administrator_views.show),
+    path('administrators/<int:id>/update/', administrator_views.update),
+    path('administrators/<int:id>/delete/', administrator_views.destroy),
     # Roles
     path('roles/', administrator_views.get_roles)
 ]

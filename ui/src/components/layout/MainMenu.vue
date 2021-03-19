@@ -30,8 +30,8 @@ export default {
   data: () => ({
     selectedItem: 0,
     items: [
-      {text: 'Dashboard', icon: 'mdi-clock', route: '/dashboard'},
-      {text: 'Administrators', icon: 'mdi-account', route: 'administrators'},
+      {text: 'Dashboard', icon: 'home', route: '/dashboard'},
+      {text: 'Administrators', icon: 'supervisor_account', route: 'administrators'},
     ],
   }),
 }
