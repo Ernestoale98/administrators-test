@@ -30,7 +30,6 @@ media
 *$py.class
 
 # Distribution / packaging
-/public/static/*
 .Python build/
 develop-eggs/
 dist/
